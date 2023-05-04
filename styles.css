@@ -1,0 +1,26 @@
+.get-definition {
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 2px;
+  border: none;
+  background: #dfe1e5;
+  font-size: 15px;
+}
+
+.word-input {
+  display: block;
+  width: 400px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 24px;
+  border: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 24px;
+}

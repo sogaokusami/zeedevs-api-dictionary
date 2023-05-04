@@ -14,10 +14,12 @@
     />
   </head>
   <body>
+    <>
     <h1>English is Haaad!</h1>
     <form id="dictionary-form" action="">
       <input
         id="hard-word"
+        class="word-input"
         type="text"
         placeholder="Type in hard word here..."
       />
@@ -38,8 +40,35 @@
       </div>
     </form>
     <script>
-      const bigWord = document.querySelector("#hard-word").value;
-      console.log(bigWord);
+      //   const dictForm = document
+      //     .querySelector("#dictionary-form")
+      //     .addEventListener("submit", (e) => {
+      //       e.preventDefault();
+      //       const bigWord = document.querySelector("#hard-word").value;
+      //       document.querySelector("#the-definition").value =
+      //         "the quality of belonging or relating uniquely to a particular subject.";
+      //         document.querySelector("#hard-word").value =
+      //         "";
+
+      const dictForm = document
+        .querySelector("#dictionary-form")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          let newWord = document.querySelector("#hard-word").value;
+          let fetchWord = `https://api.dictionaryapi.dev/api/v2/entries/en/${newWord}`;
+          console.log(fetchWord);
+          fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${newWord}`)
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              const theDefinition =
+                data[0].meanings[0].definitions[0].definition;
+              document.querySelector("#the-definition").value = theDefinition;
+
+              //   const bigWordDefinition = data[0].meta["app-shortdef"].def[0];
+              //   document.querySelector("#hard-word").value = bigWordDefinition;
+            });
+        });
     </script>
   </body>
 </html>
