@@ -15,7 +15,7 @@
   </head>
   <body>
     <h1>English is Haaad!</h1>
-    <form action="">
+    <form id="dictionary-form" action="">
       <input
         id="hard-word"
         type="text"
@@ -37,6 +37,9 @@
         </button>
       </div>
     </form>
-    <script></script>
+    <script>
+      const bigWord = document.querySelector("#hard-word").value;
+      console.log(bigWord);
+    </script>
   </body>
 </html>
