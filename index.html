@@ -14,45 +14,46 @@
     />
   </head>
   <body>
-    <>
-    <h1>English is Haaad!</h1>
-    <form id="dictionary-form" action="">
-      <input
-        id="hard-word"
-        class="word-input"
-        type="text"
-        placeholder="Type in hard word here..."
-      />
-      <br />
-      <div>
-        <button class="get-definition">Get Definition</button>
-        <br />
+    <div class="main">
+      <h1 id="dict-name">English is Haaad!</h1>
+      <form id="dictionary-form" action="">
         <input
+          id="hard-word"
+          class="word-input-output"
           type="text"
-          id="the-definition"
-          placeholder="Your definition will display here..."
-          readonly
+          placeholder="Type in hard word here..."
         />
         <br />
-        <button class="twitter-button" id="twitter" title="Tweet This!">
-          <i class="fab fa-twitter"></i>
-        </button>
-      </div>
-    </form>
-    <script>
-      //   const dictForm = document
-      //     .querySelector("#dictionary-form")
-      //     .addEventListener("submit", (e) => {
-      //       e.preventDefault();
-      //       const bigWord = document.querySelector("#hard-word").value;
-      //       document.querySelector("#the-definition").value =
-      //         "the quality of belonging or relating uniquely to a particular subject.";
-      //         document.querySelector("#hard-word").value =
-      //         "";
+        <div class="btn-wrapper">
+          <button class="get-definition-btn">Get Definition</button>
+          <br />
+          <input
+            type="text"
+            id="the-definition"
+            class="word-input-output"
+            placeholder="Your definition will display here..."
+            readonly
+          />
+          <br />
+          <button class="twitter-button" id="twitter" title="Tweet This!">
+            <i class="fab fa-twitter"></i>
+          </button>
+        </div>
+      </form>
 
-      const dictForm = document
-        .querySelector("#dictionary-form")
-        .addEventListener("submit", (e) => {
+      <script>
+        //   const dictForm = document
+        //     .querySelector("#dictionary-form")
+        //     .addEventListener("submit", (e) => {
+        //       e.preventDefault();
+        //       const bigWord = document.querySelector("#hard-word").value;
+        //       document.querySelector("#the-definition").value =
+        //         "the quality of belonging or relating uniquely to a particular subject.";
+        //         document.querySelector("#hard-word").value =
+        //         "";
+
+        const dictForm = document.querySelector("#dictionary-form");
+        dictForm.addEventListener("submit", (e) => {
           e.preventDefault();
           let newWord = document.querySelector("#hard-word").value;
           let fetchWord = `https://api.dictionaryapi.dev/api/v2/entries/en/${newWord}`;
@@ -64,11 +65,13 @@
               const theDefinition =
                 data[0].meanings[0].definitions[0].definition;
               document.querySelector("#the-definition").value = theDefinition;
-
-              //   const bigWordDefinition = data[0].meta["app-shortdef"].def[0];
-              //   document.querySelector("#hard-word").value = bigWordDefinition;
+            })
+            .catch((error) => {
+              alert(error);
+              console.log(error);
             });
         });
-    </script>
+      </script>
+    </div>
   </body>
 </html>
