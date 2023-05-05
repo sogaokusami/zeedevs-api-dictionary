@@ -52,6 +52,7 @@
         //         document.querySelector("#hard-word").value =
         //         "";
 
+        const twitterBtn = document.getElementById("twitter");
         const dictForm = document.querySelector("#dictionary-form");
         dictForm.addEventListener("submit", (e) => {
           e.preventDefault();
@@ -71,6 +72,18 @@
               console.log(error);
             });
         });
+
+        // Tweet Definition
+
+        function tweetDefinition() {
+          const hardWord = document.querySelector("#hard-word").value;
+          const theDefinition = document.querySelector("#the-definition").value;
+          const theDefinitionTweet = `Hey I just looked up the definition of ${hardWord}: ${theDefinition}`;
+          const twitterUrl = `https://twitter.com/intent/tweet?text=${theDefinitionTweet}`;
+          window.open(twitterUrl, "_blank");
+        }
+
+        twitterBtn.addEventListener("click", tweetDefinition);
       </script>
     </div>
   </body>
